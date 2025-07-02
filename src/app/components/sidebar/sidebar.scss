@@ -1,140 +1,141 @@
+@use 'abstracts/shared' as *;
+
 .app-layout {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: auto 1fr auto;
-    overflow: hidden;
-    grid-template-areas:
-        "navbar navbar"
-        "sidebar main"
-        "sidebar footer";
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: $sidebar-width 1fr;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  grid-template-areas:
+    "navbar navbar"
+    "sidebar main"
+    "sidebar footer";
 
-    &__nav {
-        grid-area: navbar;
-        position: sticky;
-        top: 0;
-        color: #3B5A83;
-        padding: 1em;
-        z-index: 10;
-        font-size: 22px;
-        font-weight: bold;
-        padding: 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
+  &__nav {
+    grid-area: navbar;
+    position: sticky;
+    top: 0;
+    color: $color-text-primary;
+    padding: $spacing-md;
+    z-index: $z-navbar;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    border-bottom: 1px solid $color-divider-light;
+  }
 
-    &__aside {
-        grid-area: sidebar;
-        overflow-y: auto;
-    }
+  &__aside {
+    grid-area: sidebar;
+    overflow-y: auto;
+  }
 
-    &__main {
-        grid-area: main;
-        padding: 0rem 1rem;
-        background: #f1f1f1;
-        overflow-y: auto;
-        height: calc(100vh - 110px);
-    }
+  &__main {
+    grid-area: main;
+    padding: 0 $spacing-md;
+    background: $color-bg-body;
+    overflow-y: auto;
+    height: calc(100vh - 110px); // Optionally token this too
+  }
 
-    &__footer {
-        grid-area: footer;
-        background-color: #ddd;
-        padding: 1rem;
-    }
+  &__footer {
+    grid-area: footer;
+    background-color: $color-bg-footer;
+    padding: $spacing-md;
+  }
 }
 
-// BEM Sidebar Styling
+// Sidebar
 .sidebar-wrapper {
-    background-color: #204c84;
-    height: calc(100vh - 75px);
-    color: #fff;
-    font-family: Arial, sans-serif;
-    padding-top: 1rem;
-    overflow-y: auto;
+  background-color: $color-bg-sidebar;
+  height: calc(100vh - 75px); // optional variable
+  color: $color-text-light;
+  font-family: $font-family-sans;
+  padding-top: $spacing-vs;
+  overflow-y: auto;
 
-    &__logo {
-        font-size: 22px;
-        font-weight: bold;
-        color: white;
-        padding: 1rem;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+  &__logo {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-light;
+    padding: $spacing-md;
+    border-bottom: 2px solid $color-divider-heavy;
+  }
+
+  &__menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    padding: $spacing-sm $spacing-lg;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    i {
+      margin-right: $spacing-sm;
+      font-size: 1.8rem;
     }
 
-    &__menu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    &:hover {
+      background-color: $color-bg-hover;
     }
 
-    &__item {
-        padding: 10px 20px;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
+    &--has-sub .sidebar-wrapper__badge {
+      margin-left: auto;
+      background-color: $color-success;
+      padding: 2px 6px;
+      border-radius: $radius-sm;
+      font-size: $font-size-xs;
+    }
+  }
 
-        i {
-            margin-right: 10px;
-             font-size: 1.8rem;
-        }
+  &__divider {
+    text-transform: uppercase;
+    font-size: $font-size-xs;
+    padding: $spacing-sm $spacing-lg;
+    background-color: $color-primary-dark;
+    font-weight: $font-weight-bold;
+  }
 
-        &:hover {
-            background-color: #3569a3;
-        }
+  &__sub {
+    background-color: $color-secondary;
+    font-size: $font-size-sm;
+    padding: $spacing-sm $spacing-lg;
+    display: flex;
+    align-items: center;
 
-        &--has-sub .sidebar-wrapper__badge {
-            margin-left: auto;
-            background-color: #28a745;
-            padding: 2px 6px;
-            border-radius: 5px;
-            font-size: 12px;
-        }
+    &--active {
+      background-color: $color-primary-dark;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 8px;
+        background-color: $color-text-light;
+      }
     }
 
-    &__divider {
-        text-transform: uppercase;
-        font-size: 12px;
-        padding: 10px 20px;
-        background-color: #1c3e6c;
-        font-weight: bold;
+    &--dark {
+      background-color: $color-sidebar-sub-dark;
     }
+  }
 
-    &__sub {
-        background-color: #3063a2;
-        font-size: 14px;
-        padding: 10px 20px;
-        display: flex;
-        align-items: center;
+  &__title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 
-        &--active {
-            background-color: #1c3e6c;
-            position: relative;
-
-            &::after {
-                content: '';
-                position: absolute;
-                right: 0;
-                top: 0;
-                height: 100%;
-                width: 8px;
-                background-color: #fff;
-            }
-        }
-
-        &--dark {
-            background-color: #0c2c53;
-        }
-    }
-
-    &__title {
-        display: flex;
-        align-items: center;
-        width: 100%;
-    }
-
-    &__badge {
-        margin-left: auto;
-        background-color: #28a745;
-        padding: 2px 6px;
-        border-radius: 5px;
-        font-size: 12px;
-    }
+  &__badge {
+    margin-left: auto;
+    background-color: $color-success;
+    padding: 2px 6px;
+    border-radius: $radius-sm;
+    font-size: $font-size-xs;
+  }
 }
