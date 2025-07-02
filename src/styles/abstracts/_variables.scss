@@ -1,0 +1,51 @@
+// -----------------------------------------
+// 🎨 COLOR VARIABLES
+// -----------------------------------------
+
+// Brand Colors
+$color-primary: #204c84;
+$color-primary-dark: #1c3e6c;
+$color-secondary: #3569a3;
+$color-accent: #28a745;
+
+// Text Colors
+$color-text-primary: #3B5A83;
+$color-text-light: #ffffff;
+$color-text-muted: #6c757d;
+
+// Backgrounds
+$color-bg-body: #f1f1f1;
+$color-bg-footer: #ddd;
+$color-bg-hover: #3569a3;
+$color-bg-sidebar: #204c84;
+
+// Borders & Dividers
+$color-divider-light: rgba(255, 255, 255, 0.2);
+$color-divider-heavy: rgba(255, 255, 255, 0.7);
+
+// Badge & Status
+$color-success: #28a745;
+$color-warning: #ffc107;
+$color-error: #dc3545;
+
+// -----------------------------------------
+// 🎨 OTHER VARIABLES
+// -----------------------------------------
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 2rem;
+
+// Radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+
+// Sidebar Width
+$sidebar-width: 300px;
+
+// Z-Index
+$z-navbar: 10;
+$z-modal: 100;
